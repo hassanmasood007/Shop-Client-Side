@@ -1,3 +1,12 @@
+# Elements Used In Front-End:
+
+1. React
+2. Redux
+3. Functional Component
+4. Styled-Component
+5. Material-UI
+6. Styled-Components Responsiveness
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
