@@ -51,7 +51,6 @@ const Products = (props) => {
       setFilterProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
     }
   }, [props.sort]);
-  console.log(filterProducts);
 
   return (
     <Container>
