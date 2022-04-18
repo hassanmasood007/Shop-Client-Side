@@ -11,14 +11,14 @@ const userSlice = createSlice({
     loginStart: (state) => {
       state.isFetching = true;
     },
-  },
-  loginSuccess: (state, action) => {
-    state.isFetching = false;
-    state.currentUser = action.payload;
-  },
-  loginFailure: (state) => {
-    state.isFetching = false;
-    state.error = true;
+    loginSuccess: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    loginFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
