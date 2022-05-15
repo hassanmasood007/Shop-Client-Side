@@ -3,12 +3,14 @@ import styled from "styled-components";
 import Footer from "../components/Footer";
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
+import { persistStore } from "redux-persist";
+import { store } from "../redux/store";
 import { mobile } from "../Responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethod";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -168,6 +170,11 @@ const Cart = () => {
     setStripeToken(token);
   };
 
+  const clearCart = () => {
+    let persistor = persistStore(store);
+    persistor.purge();
+    window.location.reload(false);
+  };
   useEffect(() => {
     const makeRequest = async () => {
       try {
@@ -187,12 +194,17 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
+
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton type="filled" onClick={clearCart}>
+            Clear Cart
+          </TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -235,11 +247,15 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemPrice>
+                $ {cart.total === 0 ? 0 : 5.9}0
+              </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemPrice>
+                - $ {cart.total === 0 ? 0 : 5.9}0
+              </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
