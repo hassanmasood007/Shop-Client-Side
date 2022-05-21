@@ -20,8 +20,8 @@ const Products = (props) => {
       try {
         const res = await axios.get(
           props.cat
-            ? `http://localhost:5000/api/products/?category=${props.cat}`
-            : "http://localhost:5000/api/products/"
+            ? `https://shopppyy.herokuapp.com/api/products/?category=${props.cat}`
+            : "https://shopppyy.herokuapp.com/api/products/"
         );
         setProducts(res.data);
       } catch (err) {}
