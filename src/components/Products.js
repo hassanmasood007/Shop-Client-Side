@@ -59,7 +59,7 @@ const Products = (props) => {
             <Product product={product} key={product._id}></Product>
           ))
         : products
-            .slice(0, 8)
+            .slice(0, 10)
             .map((product) => (
               <Product product={product} key={product._id}></Product>
             ))}
