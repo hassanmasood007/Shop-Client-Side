@@ -197,7 +197,6 @@ const Cart = () => {
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
-
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
